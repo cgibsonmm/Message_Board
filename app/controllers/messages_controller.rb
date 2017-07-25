@@ -9,11 +9,11 @@ class MessagesController < ApplicationController
   end
 
   def new
-    @message = Message.new
+    @message = current_user.messages.build
   end
 
   def create
-    @message = Message.new(message_params)
+    @message = current_user.messages.build(message_params)
     if @message.save
       flash[:success] = "Message Created"
       redirect_to root_path
@@ -38,8 +38,8 @@ class MessagesController < ApplicationController
 
   def destroy
     @message.destroy
-    flash[:success] = 'Message destroyed'
-    redirect_to root_path 
+    flash[:danger] = 'Message destroyed'
+    redirect_to root_path
   end
 
   private
