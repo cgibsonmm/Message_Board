@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.build(message_params)
     if @message.save
-      flash[:success] = "Message Created"
+      flash[:success] = 'Message Created'
       redirect_to root_path
     else
       flash[:warning] = "Error creating Message"
