@@ -36,6 +36,12 @@ class MessagesController < ApplicationController
     end
   end
 
+  def destroy
+    @message.destroy
+    flash[:success] = 'Message destroyed'
+    redirect_to root_path 
+  end
+
   private
 
     def message_params
